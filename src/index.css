@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0a1020; --card: #111a33; --fg: #e8edf9; --muted: #9aa7c7;
+  --line: #22305a; --accent: #38e1c0; --accent2: #6c8cff;
+}
+:root.light {
+  --bg: #f5f7fc; --card: #ffffff; --fg: #0f172a; --muted: #475069;
+  --line: #d5dcee; --accent: #0b8f7a; --accent2: #3a56d4;
+}
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+body { @apply bg-bg text-fg font-sans antialiased; }
+h1, h2, h3 { @apply font-display; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.section { @apply mx-auto max-w-6xl px-5 py-20 md:py-28; }
+.h2 { @apply text-3xl md:text-4xl font-bold mb-10; }
+.panel { @apply rounded-2xl border border-line bg-card p-6; }
+.gradient-text {
+  background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent));
+  background-size: 200% auto; -webkit-background-clip: text; background-clip: text;
+  color: transparent; animation: shine 6s linear infinite;
+}
+@keyframes shine { to { background-position: 200% center; } }
+.btn { @apply inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition; }
+.btn-primary { background: var(--accent); color: #04121a; }
+.btn-primary:hover { box-shadow: 0 0 24px color-mix(in srgb, var(--accent) 55%, transparent); }
+.btn-ghost { @apply border border-line text-fg hover:border-accent; }
+.caret::after { content: '|'; margin-left: 2px; animation: blink 1s steps(1) infinite; color: var(--accent); }
+@keyframes blink { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
